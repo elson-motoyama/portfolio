@@ -9,8 +9,8 @@
 *.sln.docstates
 
 # Diretórios de build
-/bin/
-/obj/
+bin/
+obj/
 
 # Arquivos de pacotes do NuGet
 *.nupkg
