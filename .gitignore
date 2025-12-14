@@ -1,0 +1,59 @@
+# Arquivos do Visual Studio
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Diretórios de build
+/bin/
+/obj/
+
+# Arquivos de pacotes do NuGet
+*.nupkg
+# Arquivos de configuração de pacote
+packages/
+
+# Diretórios de dependências (em caso de uso do NuGet ou outros)
+*.nuget/
+
+# Arquivos de logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.swp
+*.swo
+
+# Arquivos de backup
+*~
+*.bak
+*.swp
+
+# Arquivos de configuração do Windows
+Thumbs.db
+ehthumbs.db
+
+# Arquivos de compilação do .NET
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.psess
+*.vsp
+*.vssscc
+
+# Arquivos de certificado
+*.cer
+*.pfx
+*.pem
+
+# Arquivos de cache do .NET
+.vs2019/
+.vs2022/
+
+# Arquivos gerados por build do ASP.NET Core
+/wwwroot/
