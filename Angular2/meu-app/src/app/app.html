@@ -1,14 +1,22 @@
+@if (isLoggedIn$ | async) {
+
 <mat-card>
-  <mat-card-title><h1>Pedidos</h1></mat-card-title>
+  <mat-card-content>
+    <mat-card-title>
+      <h2>Pedidos</h2>
+    </mat-card-title>
+  </mat-card-content>
 </mat-card>
 
 <mat-toolbar color="primary">
-  <a mat-button routerLink="/">Lista</a>
+  <a mat-button routerLink="/lista">Lista</a>
   <a mat-button routerLink="/novo">Novo Pedido</a>
 </mat-toolbar>
 
 <hr>
 
 <br />
+
+}
 
 <router-outlet />

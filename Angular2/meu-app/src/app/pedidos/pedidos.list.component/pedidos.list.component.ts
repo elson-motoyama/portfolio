@@ -14,9 +14,9 @@ import { NotificationService } from '../../notification';
 @Component({
   selector: 'app-pedidos-list-component',
   imports: [
-    CommonModule, 
-    Delay, 
-    AprovadoPipe, 
+    CommonModule,
+    Delay,
+    AprovadoPipe,
     MatTableModule,
     MatButtonModule,
     MatCardModule,
@@ -33,14 +33,20 @@ export class PedidosListComponent {
   constructor(
     private service: PedidoService,
     private notificationService: NotificationService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe(p => {
-      this.pedidos.set(p);
+    this.service.getAll().subscribe({
+      next: (p) => {
+        this.pedidos.set(p);
+      },
+      error: (e) => {
+        console.log(e);
+        this.notificationService.error('Erro na requisição!');;
+      }
     });
   }
-  
+
   remover(id: number) {
     this.service.delete(id).subscribe(() => {
       this.notificationService.success('Pedido removido!');

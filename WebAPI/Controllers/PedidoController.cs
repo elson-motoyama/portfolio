@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers;
 
@@ -14,6 +15,7 @@ public class PedidoController : ControllerBase
         _facade = facade;
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> Get() => Ok(await _facade.GetAllPedidosAsync());
 
