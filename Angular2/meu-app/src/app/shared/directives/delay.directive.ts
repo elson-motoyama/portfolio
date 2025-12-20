@@ -4,11 +4,11 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
   selector: '[appDelay]',
   standalone: true
 })
-export class Delay {
+export class DelayDirective {
   
   constructor(
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef
+    private readonly templateRef: TemplateRef<any>,
+    private readonly viewContainer: ViewContainerRef
   ) {}
 
   @Input() set appDelay(milliseconds: number) {

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{2ECD5274-584C-4864-9F75-00696AC6BB59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationWebAPI", "Authentication\AuthenticationWebAPI.csproj", "{680EC4BD-E738-48FB-9956-DE7852F596A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationWebAPI", "AuthenticationWebAPI\AuthenticationWebAPI.csproj", "{680EC4BD-E738-48FB-9956-DE7852F596A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

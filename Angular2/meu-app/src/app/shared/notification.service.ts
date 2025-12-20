@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
-  constructor(private toastr: ToastrService) {}
+  constructor(private readonly toastr: ToastrService) {}
 
   success(msg: string, title = 'Sucesso') {
     this.toastr.success(msg, title);

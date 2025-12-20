@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AddSpacing } from '../add-spacing';
-import { DisplayBlock } from '../display-block';
+import { AddSpacingDirective } from '../shared/directives/add-spacing.directive';
+import { DisplayBlockDirective } from '../shared/directives/display-block.directive';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,11 +19,11 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    DisplayBlock,
-    AddSpacing,
+    DisplayBlockDirective,
+    AddSpacingDirective,
   ],
-  templateUrl: './login.html',
-  styleUrls: ['./login.scss'],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
   standalone: true,
 })
 export class LoginComponent {
@@ -31,9 +31,9 @@ export class LoginComponent {
   loginForm: FormGroup;
   
   constructor(
-    private authService: AuthService, 
-    private router: Router,
-    private fb: FormBuilder) {
+    private readonly authService: AuthService, 
+    private readonly router: Router,
+    private readonly fb: FormBuilder) {
     
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],

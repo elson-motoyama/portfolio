@@ -2,27 +2,27 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Pedido } from '../models/pedido.model';
 import { PedidoService } from '../pedido.service';
 import { CommonModule } from '@angular/common';
-import { Delay } from '../../delay';
-import { AprovadoPipe } from '../../aprovado-pipe';
+import { DelayDirective } from '../../shared/directives/delay.directive';
+import { AprovadoPipe } from '../../shared/pipes/aprovado.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NotificationService } from '../../notification';
+import { NotificationService } from '../../shared/notification.service';
 
 @Component({
-  selector: 'app-pedidos-list-component',
+  selector: 'app-pedidos-list',
   imports: [
     CommonModule,
-    Delay,
+    DelayDirective,
     AprovadoPipe,
     MatTableModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule
   ],
-  templateUrl: './pedidos.list.component.html',
-  styleUrl: './pedidos.list.component.scss',
+  templateUrl: './pedidos-list.component.html',
+  styleUrl: './pedidos-list.component.scss',
   standalone: true,
 })
 export class PedidosListComponent implements OnInit{

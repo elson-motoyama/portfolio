@@ -2,30 +2,30 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PedidoService } from '../pedido.service';
-import { DisplayBlock } from '../../display-block';
-import { AddSpacing } from '../../add-spacing';
+import { DisplayBlockDirective } from '../../shared/directives/display-block.directive';
+import { AddSpacingDirective } from '../../shared/directives/add-spacing.directive';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { NotificationService } from '../../notification';
+import { NotificationService } from '../../shared/notification.service';
 
 @Component({
-  selector: 'app-pedidos-form-component',
+  selector: 'app-pedidos-form',
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DisplayBlock,
-    AddSpacing,
+    DisplayBlockDirective,
+    AddSpacingDirective,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule
   ],
-  templateUrl: './pedidos.form.component.html',
-  styleUrl: './pedidos.form.component.scss',
+  templateUrl: './pedidos-form.component.html',
+  styleUrl: './pedidos-form.component.scss',
   standalone: true,
 })
 
@@ -42,9 +42,9 @@ export class PedidosFormComponent {
   };
 
   constructor(
-    private service: PedidoService,
-    private fb: FormBuilder,
-    private notificationService: NotificationService
+    private readonly service: PedidoService,
+    private readonly fb: FormBuilder,
+    private readonly notificationService: NotificationService
   ) {
     this.pedidoForm = this.fb.group({
       clienteId: [null],

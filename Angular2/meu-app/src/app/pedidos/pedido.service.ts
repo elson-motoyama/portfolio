@@ -2,16 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pedido } from './models/pedido.model';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PedidoService {
 
-  private apiUrl = 'https://localhost:7101/api/pedido';
+  private readonly apiUrl = 'https://localhost:7101/api/pedido';
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private readonly http: HttpClient, 
+    private readonly authService: AuthService
+  ) {}
 
   getAll(): Observable<Pedido[]> {
     const headers = this.authService.getAuthHeaders();

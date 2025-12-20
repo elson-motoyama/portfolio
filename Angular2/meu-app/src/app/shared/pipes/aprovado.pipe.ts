@@ -4,9 +4,5 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'aprovado',
 })
 export class AprovadoPipe implements PipeTransform {
-
-  transform(status: boolean): string {
-    return status ? '🟢' : '🔴';
-  }
-
+  transform = (aprovado: boolean): string => aprovado ? '🟢' : '🔴';
 }

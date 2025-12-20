@@ -3,9 +3,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { RouterOutlet, RouterLink } from '@angular/router';
-import { AuthService } from './auth';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './shared/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +17,15 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     CommonModule
   ],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
-export class App {
+export class AppComponent {
   isLoggedIn$!: Observable<boolean>;
 
-  constructor(private authService: AuthService) {
+  constructor(private readonly authService: AuthService) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
   }
+
   protected readonly title = signal('meu-app');
 }

@@ -3,11 +3,11 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 @Directive({
   selector: '[appAddSpacing]'
 })
-export class AddSpacing implements OnInit {
+export class AddSpacingDirective implements OnInit {
 
   @Input() appAddSpacing?: string;
 
-  constructor(private el: ElementRef) { }
+  constructor(private readonly el: ElementRef) { }
 
   ngOnInit() {
     const spacing  = this.appAddSpacing || '10px';
