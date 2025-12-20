@@ -9,6 +9,7 @@ import { DisplayBlockDirective } from '../shared/directives/display-block.direct
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AuthService } from '../shared/auth/auth.service';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +28,14 @@ import { AuthService } from '../shared/auth/auth.service';
   standalone: true,
 })
 export class LoginComponent {
-  errorMessage: string = '';
   loginForm: FormGroup;
   
   constructor(
     private readonly authService: AuthService, 
     private readonly router: Router,
-    private readonly fb: FormBuilder) {
+    private readonly fb: FormBuilder,
+    private readonly notificationService: NotificationService
+  ) {
     
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -43,7 +45,7 @@ export class LoginComponent {
 
   login(): void {
     if (this.loginForm.invalid) {
-      this.errorMessage = 'Por favor, preencha todos os campos.';
+      this.notificationService.error('Por favor, preencha todos os campos.');
       return;
     }
 
@@ -53,7 +55,7 @@ export class LoginComponent {
         this.router.navigate(['/lista']);
       },
       error: (e) => {
-        this.errorMessage = 'Erro ao fazer login. Verifique as credenciais!';
+      this.notificationService.error('Erro ao fazer login. Verifique as credenciais!');
       }
     });
   }

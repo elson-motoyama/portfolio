@@ -62,11 +62,16 @@ export class PedidosFormComponent {
 
     const pedido = this.pedidoForm.value;
 
-    this.service.create(pedido).subscribe(() => {
-      this.notificationService.success('Pedido salvo!');
-      this.pedidoForm.reset({
-        aprovado: false
-      });
+    this.service.create(pedido).subscribe((response) => {
+      if (response.success) {
+        this.notificationService.success('Pedido salvo!');
+        this.pedidoForm.reset({
+          aprovado: false
+        });
+      }
+      else {
+        this.notificationService.error(response.error);
+      }
     });
   }
 }
