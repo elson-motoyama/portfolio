@@ -20,7 +20,11 @@ namespace WebAPI
                 {
                     policy.WithOrigins("http://localhost:4200")
                           .AllowAnyHeader()
-                          .AllowAnyMethod();
+                          .AllowAnyMethod()
+                          .WithExposedHeaders(
+                            "Token-Error"
+                          )
+                          ;
                 });
             });
 
@@ -58,7 +62,7 @@ namespace WebAPI
                 {
                     OnChallenge = context =>
                     {
-                        context.Response.Headers.Add("Token-Error", "Token invalido ou expirado");
+                        context.Response.Headers.Add("Token-Error", "Invalid or expired token");
                         return Task.CompletedTask;
                     }
                 };
@@ -70,6 +74,8 @@ namespace WebAPI
 
             app.UseSwagger();
             app.UseSwaggerUI();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.MapControllers();
            
             using (var scope = app.Services.CreateScope())
@@ -80,7 +86,7 @@ namespace WebAPI
                 {
                     context.Clientes.AddRange(
                         new Cliente { Nome = "Fulano (VIP - Desconto Liberado)", Vip = true },
-                        new Cliente { Nome = "Sicrano (Não VIP)", Vip = false },
+                        new Cliente { Nome = "Sicrano (NÃ£o VIP)", Vip = false },
                         new Cliente { Nome = "Beltrano (VIP - Desconto Liberado)", Vip = true }
                     );
 

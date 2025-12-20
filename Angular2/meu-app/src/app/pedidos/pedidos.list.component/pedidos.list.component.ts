@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Pedido } from '../models/pedido.model';
 import { PedidoService } from '../pedido.service';
 import { CommonModule } from '@angular/common';
-import { signal } from '@angular/core';
 import { Delay } from '../../delay';
 import { AprovadoPipe } from '../../aprovado-pipe';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,13 +25,13 @@ import { NotificationService } from '../../notification';
   styleUrl: './pedidos.list.component.scss',
   standalone: true,
 })
-export class PedidosListComponent {
+export class PedidosListComponent implements OnInit{
 
   pedidos = signal<Pedido[]>([]);
 
   constructor(
-    private service: PedidoService,
-    private notificationService: NotificationService
+    private readonly service: PedidoService,
+    private readonly notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -41,8 +40,7 @@ export class PedidosListComponent {
         this.pedidos.set(p);
       },
       error: (e) => {
-        console.log(e);
-        this.notificationService.error('Erro na requisição!');;
+        this.notificationService.error(e.headers?.get('token-error'));;
       }
     });
   }
